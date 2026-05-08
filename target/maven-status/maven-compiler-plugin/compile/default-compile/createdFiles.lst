@@ -1,0 +1,11 @@
+io\github\caiovvieira\movie_review\controller\MovieController.class
+io\github\caiovvieira\movie_review\controller\ReviewController.class
+io\github\caiovvieira\movie_review\dto\MovieRatingDto.class
+io\github\caiovvieira\movie_review\dto\MovieResponseDto.class
+io\github\caiovvieira\movie_review\repository\ReviewRepository.class
+io\github\caiovvieira\movie_review\service\MovieService.class
+io\github\caiovvieira\movie_review\dto\MovieDto.class
+io\github\caiovvieira\movie_review\entity\Review.class
+io\github\caiovvieira\movie_review\service\ReviewService.class
+io\github\caiovvieira\movie_review\dto\MovieImageDto.class
+io\github\caiovvieira\movie_review\MovieReviewApplication.class

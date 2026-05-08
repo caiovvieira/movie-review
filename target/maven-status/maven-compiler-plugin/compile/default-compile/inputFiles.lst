@@ -1,0 +1,11 @@
+C:\Users\caio.vieira\Projetos\movie-review\src\main\java\io\github\caiovvieira\movie_review\controller\MovieController.java
+C:\Users\caio.vieira\Projetos\movie-review\src\main\java\io\github\caiovvieira\movie_review\controller\ReviewController.java
+C:\Users\caio.vieira\Projetos\movie-review\src\main\java\io\github\caiovvieira\movie_review\dto\MovieDto.java
+C:\Users\caio.vieira\Projetos\movie-review\src\main\java\io\github\caiovvieira\movie_review\dto\MovieImageDto.java
+C:\Users\caio.vieira\Projetos\movie-review\src\main\java\io\github\caiovvieira\movie_review\dto\MovieRatingDto.java
+C:\Users\caio.vieira\Projetos\movie-review\src\main\java\io\github\caiovvieira\movie_review\dto\MovieResponseDto.java
+C:\Users\caio.vieira\Projetos\movie-review\src\main\java\io\github\caiovvieira\movie_review\entity\Review.java
+C:\Users\caio.vieira\Projetos\movie-review\src\main\java\io\github\caiovvieira\movie_review\MovieReviewApplication.java
+C:\Users\caio.vieira\Projetos\movie-review\src\main\java\io\github\caiovvieira\movie_review\repository\ReviewRepository.java
+C:\Users\caio.vieira\Projetos\movie-review\src\main\java\io\github\caiovvieira\movie_review\service\MovieService.java
+C:\Users\caio.vieira\Projetos\movie-review\src\main\java\io\github\caiovvieira\movie_review\service\ReviewService.java

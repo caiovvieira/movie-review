@@ -1,0 +1,18 @@
+package io.github.caiovvieira.movie_review;
+
+import io.github.caiovvieira.movie_review.service.AuditingService;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.data.domain.AuditorAware;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+
+@SpringBootApplication
+@EnableJpaAuditing
+public class MovieReviewApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MovieReviewApplication.class, args);
+	}
+
+}
