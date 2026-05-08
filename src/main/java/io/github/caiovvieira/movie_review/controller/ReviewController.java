@@ -1,8 +1,11 @@
 package io.github.caiovvieira.movie_review.controller;
 
+import io.github.caiovvieira.movie_review.dto.RequestReviewDto;
 import io.github.caiovvieira.movie_review.entity.Review;
 import io.github.caiovvieira.movie_review.service.ReviewService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,19 +33,22 @@ public class ReviewController {
     }
 
     @PostMapping
-    public Review createReview(@RequestBody Review review) {
-        return reviewService.save(review);
+    public ResponseEntity<Void> createReview(@Valid @RequestBody RequestReviewDto review) {
+        reviewService.save(review);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Review> updateReview(@PathVariable Long id, @RequestBody Review reviewDetails) {
-        Review review = reviewService.findById(id);
-        if (review != null) {
+//        Review review = reviewService.findById(id);
+//        if (review != null) {
+//
+//            return ResponseEntity.ok(reviewService.save(review));
+//        } else {
+//            return ResponseEntity.notFound().build();
+//        }
 
-            return ResponseEntity.ok(reviewService.save(review));
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")
