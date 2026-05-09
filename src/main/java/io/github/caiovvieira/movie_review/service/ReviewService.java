@@ -6,6 +6,7 @@ import io.github.caiovvieira.movie_review.dto.RequestReviewDto;
 import io.github.caiovvieira.movie_review.entity.Review;
 import io.github.caiovvieira.movie_review.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -22,6 +23,10 @@ import java.util.List;
 public class ReviewService {
     private final ReviewRepository reviewRepository;
 
+    @Value("${api-key}")
+    private String url;
+
+
     public List<Review> findAll() {
         return reviewRepository.findAll();
     }
@@ -32,27 +37,36 @@ public class ReviewService {
 
     public Review save(RequestReviewDto reviewRequest) {
 
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(url + "search/titles/" + reviewRequest.getMovieId()))
-                .timeout(Duration.ofMinutes(2))
-                .build();
+        try{
+            HttpClient client = HttpClient.newHttpClient();
+            HttpRequest request = HttpRequest.newBuilder()
+                    .uri(URI.create(url + "search/titles/" + reviewRequest.getMovieId()))
+                    .timeout(Duration.ofMinutes(2))
+                    .build();
 
-        ObjectMapper objectMapper = new ObjectMapper();
+            ObjectMapper objectMapper = new ObjectMapper();
 
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        MovieResponseDto responseDto = objectMapper.readValue(response.body(), MovieResponseDto.class);
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            MovieResponseDto responseDto = objectMapper.readValue(response.body(), MovieResponseDto.class);
 
-        BigDecimal rating = new BigDecimal(reviewRequest.getRating())
-                .multiply(BigDecimal.valueOf(2))
-                .setScale(0, RoundingMode.DOWN)
-                .divide(BigDecimal.valueOf(2));
+            BigDecimal rating = new BigDecimal(reviewRequest.getRating())
+                    .multiply(BigDecimal.valueOf(2))
+                    .setScale(0, RoundingMode.DOWN)
+                    .divide(BigDecimal.valueOf(2));
 
-        Review review = new Review();
-        review.setMovieId(reviewRequest.getMovieId());
-        review.setRating(rating);
-        review.setReviewText(reviewRequest.getReviewText());
-        return reviewRepository.save(review);
+            Review review = new Review();
+            review.setMovieId(reviewRequest.getMovieId());
+            review.setRating(rating);
+            review.setReviewText(reviewRequest.getReviewText());
+            return reviewRepository.save(review);
+        }
+        catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+
+
+
     }
 
     public void deleteById(Long id) {
